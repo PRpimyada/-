@@ -1,91 +1,60 @@
 ﻿using System;
-static void Main(string[] args) 
-{
-    //int week = 7 Day; 
- Console.WriteLine("Days of the week (1-7 Day):");
-  int day = int.Parse(Console.ReadLine());
-/*Console.WriteLine("sunday");
-Console.WriteLine("monday");
-Console.WriteLine("Tuesday");
-Console.WriteLine("Wednesday");
-Console.WriteLine("Friday");
-Console.WriteLine("Saturday");*/
-Console.WriteLine("Time of Day 8-18 (8.00 - 18.00 น.) : ");
- int Time = int.Parse(Console.ReadLine());
-if (Day < 7  Day > 1 , Time > 8 ,Time < 18 ); {
-} else { Console.WriteLine("Menu");
- Console.WriteLine("1.) Breakfast Set 5");
- Console.WriteLine ("2.) Weekend Set 6");
- Console.WriteLine ("3.)Coffee set 3");
-}
-    
-}
-
-
-
-
-
-
-/*using System;
 class Program {
     static void Main(string[] args) {
-        Console.Write("Input day of week (Write only 1-7 (Mon-Sun)): ");
-        int day = int.Parse(Console.ReadLine());
-
-        Console.Write("Input time of day (Write only 8-18 (8:00 - 18:00)): ");
-        int time = int.Parse(Console.ReadLine());
-
-        if (day < 1 || day > 7 || time < 8 || time > 18) {
-            Console.WriteLine("Sorry your order is not available");
-        } else {
-            int breakfast = 5;
-            int weekend = 2;
-            int coffee = 3;
-
-            Console.WriteLine();
-            Console.WriteLine("Menu");
-            Console.WriteLine("1.) Breakfast Set (You can buy {0} sets per day)", breakfast);
-            Console.WriteLine("2.) Weekend Set (You can buy {0} sets per day)", weekend);
-            Console.WriteLine("3.) Coffee (You can buy {0} per day)", coffee);
-            Console.WriteLine();
-
-            while (true) {
-                Console.Write("What do you want to buy? (Use only capital letters BREAKFAST, WEEKEND, COFFEE If you finished order input END): ");
-                string food = Console.ReadLine().ToUpper();
-                if (food == "BREAKFAST") {
-                    if (breakfast > 0 && time <= 11) {
-                        breakfast--;
-                        Console.WriteLine("Order Complete (You can buy Breakfast Set only {0} more)", breakfast);
-                    } else if (time > 11) {
-                        Console.WriteLine("Sorry Breakfast Set can only be sold until 11:00");
+        Console.Write("Day of Week (1-7):");
+        int days = int.Parse(Console.ReadLine());
+        Console.Write("Time of Day (8-18):");
+        int times = int.Parse(Console.ReadLine());
+        int b_count = 5;
+        int w_count = 2;
+        int c_count = 3;
+        Console.WriteLine("Menu");
+        Console.WriteLine("Breakfast Set:5");
+        Console.WriteLine("Weekend Set:2");
+        Console.WriteLine("Coffee:3");
+        for (;;) {
+            Console.Write("Your order (BREAKFAST_SET,WEEKEND_SET,COFFEE):");
+            string all = Console.ReadLine().ToUpper();
+            switch (all) {
+                case "BREAKFAST_SET":
+                    if (b_count > 0 && times < 12) {
+                        b_count--;
+                        Console.WriteLine("Breakfast Set:{0})", b_count);
+                    } else if (times > 11) {
+                        Console.WriteLine("Sorry your order is not available");
                     } else {
                         Console.WriteLine("Sorry your order is out of stock");
                     }
-                } else if (food == "WEEKEND") {
-                    if (weekend > 0) {
-                        weekend--;
-                        Console.WriteLine("Order Complete (You can buy Weekend Set only {0} more)", weekend);
-                    } else {
-                        Console.WriteLine("Sorry your order is out of stock");
-                    }
-                } else if (food == "COFFEE") {
-                    if (coffee > 0) {
-                        coffee--;
-                        Console.WriteLine("Order Complete (You can buy Coffee only {0} more)", coffee);
-                    } else {
-                        Console.WriteLine("Sorry your order is out of stock");
-                    }
-                } else if (food == "END") {
-                    Console.WriteLine("Thank you");
                     break;
-                } else {
+                case "WEEKEND_SET":
+                    if (w_count > 0 && days > 5) {
+                        w_count--;
+                        Console.WriteLine("Weekend Set:{0})", w_count);
+                    } else if (days < 6) {
+                        Console.WriteLine("Sorry your order is not available");
+                    } else {
+                        Console.WriteLine("Sorry your order is out of stock");
+                    }
+                    break;
+                case "COFFEE":
+                    if (c_count > 0) {
+                        c_count--;
+                        Console.WriteLine("Coffee:{0})", c_count);
+                    } else {
+                        Console.WriteLine("Sorry your order is out of stock");
+                    }
+                    break;
+                case "END":
+                    Console.WriteLine("Goodbye");
+                    return;
+                default:
                     Console.WriteLine("Please enter a valid menu");
-                }
-                if (breakfast == 0 && weekend == 0 && coffee == 0) {
-                    Console.WriteLine("Sorry your order is out of stock");
                     break;
-                }
+            }
+            if (b_count == 0 && w_count == 0 && c_count == 0) {
+                Console.WriteLine("Sorry your order is out of stock");
+                break;
             }
         }
     }
-}*/
+}
